@@ -6,7 +6,7 @@
 /*   By: mdorr <mdorr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 16:35:04 by mdorr             #+#    #+#             */
-/*   Updated: 2023/07/07 18:25:46 by mdorr            ###   ########.fr       */
+/*   Updated: 2023/07/07 18:51:26 by mdorr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,16 @@ bool	grab_forks(t_philo *ph)
 {
 	time_t	timestamp;
 
-	pthread_mutex_lock(ph->left_fork);
-	pthread_mutex_lock(ph->right_fork);
+	if (ph->index % 2 == 0)
+	{
+		pthread_mutex_lock(ph->right_fork);
+		pthread_mutex_lock(ph->left_fork);
+	}
+	else
+	{
+		pthread_mutex_lock(ph->left_fork);
+		pthread_mutex_lock(ph->right_fork);
+	}
 	timestamp = get_simulation_time(ph->start_time);
 	if (stop_or_print(ph->data, ph, TAKEN_FORK) == true)
 	{
@@ -31,6 +39,14 @@ bool	grab_forks(t_philo *ph)
 
 void	drop_forks(t_philo *ph)
 {
-	pthread_mutex_unlock(ph->left_fork);
-	pthread_mutex_unlock(ph->right_fork);
+	if (ph->index % 2 == 0)
+	{
+		pthread_mutex_unlock(ph->right_fork);
+		pthread_mutex_unlock(ph->left_fork);
+	}
+	else
+	{
+		pthread_mutex_unlock(ph->left_fork);
+		pthread_mutex_unlock(ph->right_fork);
+	}
 }
