@@ -6,7 +6,7 @@
 /*   By: mdorr <mdorr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:48:23 by mdorr             #+#    #+#             */
-/*   Updated: 2023/07/07 17:53:31 by mdorr            ###   ########.fr       */
+/*   Updated: 2023/07/07 18:38:56 by mdorr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,16 @@ static int	manager_loop(t_data *data,
 				get_simulation_time(data->philo_tab[i].start_time));
 			return (EXIT_SUCCESS);
 		}
-		pthread_mutex_unlock(&data->philo_tab[i].manager_mutex);
-		i++;
+		pthread_mutex_unlock(&data->philo_tab[i++].manager_mutex);
 	}
+	pthread_mutex_lock(&data->simulation_mutex);
+	if (data->satiated_nbr == data->ph_nbr)
+	{
+		pthread_mutex_unlock(&data->simulation_mutex);
+		update_data_stop(data);
+		return (EXIT_SUCCESS);
+	}
+	pthread_mutex_unlock(&data->simulation_mutex);
 	return (EXIT_FAILURE);
 }
 
@@ -62,6 +69,5 @@ void	*manager_routine(void *arg)
 		if (manager_loop(data, philo_nbr, start_time, t_die) == EXIT_SUCCESS)
 			break ;
 	}
-	printf("chao manager\n");
 	return (NULL);
 }

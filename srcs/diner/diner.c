@@ -6,7 +6,7 @@
 /*   By: mdorr <mdorr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:48:21 by mdorr             #+#    #+#             */
-/*   Updated: 2023/07/07 18:00:49 by mdorr            ###   ########.fr       */
+/*   Updated: 2023/07/07 18:39:02 by mdorr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,5 @@ void	*diner(void *arg)
 		if (philo_loop(ph, data) == EXIT_FAILURE)
 			break ;
 	}
-	printf("chao philo %zu\n", ph->index);
 	return (NULL);
 }
