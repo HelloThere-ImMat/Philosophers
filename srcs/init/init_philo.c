@@ -6,7 +6,7 @@
 /*   By: mdorr <mdorr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:22:38 by mdorr             #+#    #+#             */
-/*   Updated: 2023/07/07 17:45:14 by mdorr            ###   ########.fr       */
+/*   Updated: 2023/07/07 18:26:41 by mdorr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ int	init_threads(t_data *data)
 	size_t	i;
 
 	data->philo_tab = init_philo(data);
-	printf("data ph - nbr is %zu\n", data->ph_nbr);
 	if (data->philo_tab == NULL)
 		return (EXIT_FAILURE);
 	i = 0;

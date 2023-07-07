@@ -6,7 +6,7 @@
 /*   By: mdorr <mdorr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 16:38:45 by mdorr             #+#    #+#             */
-/*   Updated: 2023/07/07 18:06:50 by mdorr            ###   ########.fr       */
+/*   Updated: 2023/07/07 18:25:59 by mdorr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ bool	stop_or_print(t_data *data, t_philo *ph, char *message)
 	pthread_mutex_lock(&data->simulation_mutex);
 	if (data->stop == true)
 	{
-		printf("philo %zu end\n", ph->index);
+		pthread_mutex_unlock(&data->simulation_mutex);
 		return (true);
 	}
 	pthread_mutex_unlock(&data->simulation_mutex);
