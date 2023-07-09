@@ -8,10 +8,14 @@ CC		=	gcc
 ### FLAGS ###
 #############
 
-CFLAGS	=	-Wall -Werror -Wextra -g
+CFLAGS	=	-Wall -Werror -Wextra
 
 ifeq ($(debug), true)
 	CFLAGS	+= -fsanitize=undefined,thread
+endif
+
+ifeq ($(g_flag), true)
+	CFLAGS	+= -g
 endif
 
 #############

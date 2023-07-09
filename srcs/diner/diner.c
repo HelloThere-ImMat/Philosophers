@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   diner.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdorr <mdorr@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mat <mat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:48:21 by mdorr             #+#    #+#             */
-/*   Updated: 2023/07/07 18:52:41 by mdorr            ###   ########.fr       */
+/*   Updated: 2023/07/09 20:45:41 by mat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ void	*diner(void *arg)
 	pthread_mutex_unlock(&data->simulation_mutex);
 	if (ph->index % 2 == 0)
 		ft_usleep(ph->t_eat / 10);
-	//pthread_mutex_lock(&ph->manager_mutex);
+	pthread_mutex_lock(&ph->manager_mutex);
 	ph->t_last_diner = ph->start_time;
-	//pthread_mutex_unlock(&ph->manager_mutex);
+	pthread_mutex_unlock(&ph->manager_mutex);
 	while (1)
 	{
 		if (philo_loop(ph, data) == EXIT_FAILURE)

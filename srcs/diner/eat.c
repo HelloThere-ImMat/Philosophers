@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   eat.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdorr <mdorr@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mat <mat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 16:36:22 by mdorr             #+#    #+#             */
-/*   Updated: 2023/07/07 18:52:35 by mdorr            ###   ########.fr       */
+/*   Updated: 2023/07/09 20:47:16 by mat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 int	eating_state(t_philo *ph)
 {
 	print_message(ph, EATING, get_simulation_time(ph->start_time));
-	//pthread_mutex_lock(&ph->manager_mutex);
+	pthread_mutex_lock(&ph->manager_mutex);
 	ph->t_last_diner = get_simulation_time(ph->start_time);
-	//pthread_mutex_unlock(&ph->manager_mutex);
+	pthread_mutex_unlock(&ph->manager_mutex);
 	ft_usleep(ph->t_eat);
 	ph->diner_count++;
 	if (ph->diner_count == ph->eat_nbr)
