@@ -6,7 +6,7 @@
 /*   By: mdorr <mdorr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 13:59:34 by mdorr             #+#    #+#             */
-/*   Updated: 2023/07/07 16:48:37 by mdorr            ###   ########.fr       */
+/*   Updated: 2023/07/10 14:57:31 by mdorr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,12 +117,10 @@ void	*diner(void *arg);
 
 // FORKS
 
-
 bool	grab_forks(t_philo *ph);
 void	drop_forks(t_philo *ph);
 
 // EAT
-
 
 int		eating_state(t_philo *ph);
 
@@ -136,7 +134,6 @@ void	update_data_stop(t_data *data);
 bool	stop_or_print(t_data *data, t_philo *ph, char *message);
 
 // TIME
-
 
 void	ft_usleep(time_t time);
 time_t	get_simulation_time(time_t start_time);

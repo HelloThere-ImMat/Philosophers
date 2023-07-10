@@ -6,7 +6,7 @@
 /*   By: mdorr <mdorr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 15:17:08 by mdorr             #+#    #+#             */
-/*   Updated: 2023/07/07 15:28:57 by mdorr            ###   ########.fr       */
+/*   Updated: 2023/07/10 14:57:12 by mdorr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ static int	check_nbr(char *str)
 		return (EXIT_FAILURE);
 	}
 	return (EXIT_SUCCESS);
-
 }
 
 static int	check_arg_values(int argc, char **argv)
