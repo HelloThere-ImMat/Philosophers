@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdorr <mdorr@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mat <mat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:15:29 by mdorr             #+#    #+#             */
-/*   Updated: 2023/07/07 15:34:46 by mdorr            ###   ########.fr       */
+/*   Updated: 2023/07/10 09:26:23 by mat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,9 @@ int	main(int argc, char **argv)
 {
 	t_data	data;
 
-	if (check_arg(argc, argv) == EXIT_FAILURE || init(&data, argc, argv))
+	if (check_arg(argc, argv) == EXIT_FAILURE)
+		return (EXIT_FAILURE);
+	if (init(&data, argc, argv) == EXIT_FAILURE)
 	{
 		free_manager(data);
 		return (EXIT_FAILURE);

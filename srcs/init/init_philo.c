@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_philo.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdorr <mdorr@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mat <mat@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:22:38 by mdorr             #+#    #+#             */
-/*   Updated: 2023/07/07 18:26:41 by mdorr            ###   ########.fr       */
+/*   Updated: 2023/07/10 09:42:47 by mat              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static int	fill_philo(t_data *data, t_philo *philo, size_t i)
 	philo->t_sleep = data->t_sleep;
 	philo->eat_nbr = data->eat_nbr;
 	philo->with_eat_limit = data->with_eat_limit;
+	philo->t_last_diner = 0;
 	philo->full = false;
 	if (pthread_mutex_init(&philo->manager_mutex, NULL) != 0)
 		return (EXIT_FAILURE);
