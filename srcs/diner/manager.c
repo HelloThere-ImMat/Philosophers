@@ -6,7 +6,7 @@
 /*   By: mdorr <mdorr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:48:23 by mdorr             #+#    #+#             */
-/*   Updated: 2023/07/10 14:34:44 by mdorr            ###   ########.fr       */
+/*   Updated: 2023/07/10 16:54:26 by mdorr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static bool	check_death(t_data *data,
 {
 	pthread_mutex_lock(&ph->manager_mutex);
 	if (get_simulation_time(start_time) - ph->t_last_diner
-		> t_die)
+		> t_die && ph->full == false)
 	{
 		pthread_mutex_unlock(&ph->manager_mutex);
 		update_data_stop(data);
