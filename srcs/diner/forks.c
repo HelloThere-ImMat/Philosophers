@@ -6,7 +6,7 @@
 /*   By: mdorr <mdorr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 16:35:04 by mdorr             #+#    #+#             */
-/*   Updated: 2023/07/07 18:51:26 by mdorr            ###   ########.fr       */
+/*   Updated: 2023/07/10 14:37:30 by mdorr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ bool	grab_forks(t_philo *ph)
 		pthread_mutex_unlock(ph->right_fork);
 		return (false);
 	}
-	printf("%zu %zu %s\n", timestamp, ph->index, TAKEN_FORK);
+	print_message(ph, TAKEN_FORK, timestamp);
 	return (true);
 }
 

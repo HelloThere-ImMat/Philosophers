@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   manager.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mat <mat@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mdorr <mdorr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:48:23 by mdorr             #+#    #+#             */
-/*   Updated: 2023/07/09 21:34:20 by mat              ###   ########.fr       */
+/*   Updated: 2023/07/10 14:34:44 by mdorr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ static bool	check_death(t_data *data,
 	{
 		pthread_mutex_unlock(&ph->manager_mutex);
 		update_data_stop(data);
-		print_message(ph, DEAD, get_simulation_time(start_time));
+		pthread_mutex_lock(&data->print_mutex);
+		printf("%zu %zu %s\n", get_simulation_time(start_time), ph->index, DEAD);
+		pthread_mutex_unlock(&data->print_mutex);
 		return (true);
 	}
 	pthread_mutex_unlock(&ph->manager_mutex);

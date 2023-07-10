@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mat <mat@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mdorr <mdorr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:15:29 by mdorr             #+#    #+#             */
-/*   Updated: 2023/07/10 09:26:23 by mat              ###   ########.fr       */
+/*   Updated: 2023/07/10 14:35:10 by mdorr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	print_message(t_philo *ph, char *message, size_t timestamp)
 
 	data = ph->data;
 	pthread_mutex_lock(&data->print_mutex);
-	printf("%zu %zu %s\n", timestamp, ph->index, message);
+	if (data->stop == false)
+		printf("%zu %zu %s\n", timestamp, ph->index, message);
 	pthread_mutex_unlock(&data->print_mutex);
 }
 
