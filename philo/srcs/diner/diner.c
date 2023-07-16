@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   diner.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mat <mat@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: mdorr <mdorr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:48:21 by mdorr             #+#    #+#             */
-/*   Updated: 2023/07/10 09:42:24 by mat              ###   ########.fr       */
+/*   Updated: 2023/07/16 14:33:43 by mdorr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,17 @@ void	*diner_single(void *arg)
 	return (NULL);
 }
 
+static time_t	time_to_think(t_philo *ph)
+{
+	time_t	time;
+
+	time = (ph->t_die - (get_simulation_time(ph->start_time)
+				- ph->t_last_diner) - ph->t_eat) / 2;
+	if (time < 0)
+		return (0);
+	return (time);
+}
+
 static int	philo_loop(t_philo *ph, t_data *data)
 {
 	if (ph->full == false)
@@ -41,6 +52,7 @@ static int	philo_loop(t_philo *ph, t_data *data)
 			|| eating_state(ph) == EXIT_FAILURE
 			|| stop_or_print(data, ph, THINK) == true)
 			return (EXIT_FAILURE);
+		ft_usleep(time_to_think(ph));
 	}
 	return (EXIT_SUCCESS);
 }
